@@ -1,0 +1,19 @@
+name: 'build_mau'
+version: '1.0.0'
+config-version: 2
+profile: 'build_mau'
+
+model-paths: ["models"]
+snapshot-paths: ["snapshots"]   # ensure this is present
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  build_mau:
+    +materialized: view         # default (unused by our folders below)
+    input:
+      +materialized: ephemeral  # CTEs (no objects created)
+    output:
+      +materialized: table      # physical table in ANALYTICS
