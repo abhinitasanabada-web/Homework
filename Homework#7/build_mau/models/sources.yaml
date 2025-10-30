@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: raw
+    database: USER_DB_CATFISH
+    schema: raw
+    description: "Raw tables"
+    tables:
+      - name: user_session_channel
+        identifier: user_session_channel
+        description: "userId, sessionId, channel"
+      - name: session_timestamp
+        identifier: session_timestamp
+        description: "sessionId timestamps"
+
+  - name: analytics
+    database: USER_DB_CATFISH
+    schema: ANALYTICS
+    description: "ELT output schema"
+    tables:
+      - name: session_summary
+        identifier: session_summary
+        description: "Joined session info"
