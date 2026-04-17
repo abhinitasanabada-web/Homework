@@ -1,0 +1,14 @@
+PART-2
+
+
+In this part, I reused my Kafka-based multi-agent system from Homework 8. I first sent a test question through the pipeline using send_question.py, which generated a unique question_id. The Planner agent read the question from the inbox topic and created a plan in the tasks topic. Then the Writer agent used that plan to generate a draft response in the drafts topic. After that, the Reviewer agent checked the draft and sent the final answer to the final topic. Once all the stages finished, I ran the GEval evaluator using the same question_id so that I could evaluate the outputs from each stage. This helped me see how well each agent contributed to the overall workflow and whether the final answer was actually better than the draft.
+GEval Scores
+Planner (Plan Quality): 0.600
+Writer (Helpfulness): 0.600
+Reviewer (Helpfulness): 0.600
+Final-vs-Draft Improvement: 0.800
+
+
+Screenshot: GEval scores for the Planner, Writer, and Reviewer agents, along with the improvement score for the final answer over the draft.
+Reflection Paragraph
+Working on this part helped me understand why automated evaluation is useful in multi-agent systems. Instead of only reading the answers myself and guessing whether the agents worked well together, GEval gave me a clearer way to measure their performance. The scores showed that the Planner, Writer, and Reviewer were able to produce relevant outputs, but they also showed that the responses could still be improved with more detail and refinement. I also noticed that the reviewer stage did not change the draft very much, which explains why the improvement was limited. This kind of evaluation is helpful because it points to exactly where the system is weak. It saves time, makes comparison easier across multiple runs, and helps me improve the prompts or agent logic in a more systematic way. Overall, it made the coordination between agents easier to analyze and improve.
